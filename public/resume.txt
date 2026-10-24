@@ -1,0 +1,31 @@
+ANAMIKA MUKHERJEE
+Full Stack Developer | B.Tech Computer Science & Engineering '27 | Machine Learning
+Prayagraj, India — interning at Zrotis
+github.com/Anamika-codes — anamikamukh11@gmail.com
+
+This is a placeholder resume file. Replace it with a real PDF (e.g. resume.pdf)
+and update the "download" links in src/components/Hero.jsx and
+src/components/Navbar.jsx to point at your document.
+
+EXPERIENCE
+Full Stack Developer Intern — Zrotis (Active)
+- Engineering client and server modules with performant modern web patterns and component systems
+- Collaborating on API endpoints, state management workflows, and UX responsiveness audits
+- Shipping features iteratively with code reviews, git workflows, and cross-functional feedback
+
+SKILLS
+Frontend: HTML5, CSS3, JavaScript (ES6+), React
+Backend: Node.js, Express
+Database: MongoDB
+AI & ML: Python, scikit-learn, SHAP, Streamlit
+Tools: Git, GitHub, VS Code
+
+PROJECTS
+- Cold Email Generator (Full Stack) — HTML5, CSS3, JavaScript, Python/Streamlit
+- SkillScout (ML / AI) — Python, HTML/CSS, Recommendation
+- AI Salary Predictor (ML / AI) — Python, scikit-learn, SHAP, Streamlit
+
+EDUCATION
+B.Tech, Computer Science & Engineering — Prayagraj, India
+Expected graduation: 2027
+Focus: Data Structures, Algorithms, Web Engineering, ML Foundations, OOP, Software Architecture

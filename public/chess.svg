@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600" role="img" aria-label="Chess placeholder">
+  <defs>
+    <linearGradient id="warm" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#3a2a22"/>
+      <stop offset="0.5" stop-color="#4a3527"/>
+      <stop offset="1" stop-color="#241a16"/>
+    </linearGradient>
+    <radialGradient id="lamp" cx="0.5" cy="0.05" r="0.7">
+      <stop offset="0" stop-color="#fcd34d" stop-opacity="0.35"/>
+      <stop offset="1" stop-color="#fcd34d" stop-opacity="0"/>
+    </radialGradient>
+    <pattern id="grain" width="20" height="20" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="1.2" fill="#fbbf24" fill-opacity="0.18"/>
+    </pattern>
+  </defs>
+
+  <rect width="800" height="600" fill="url(#warm)"/>
+  <rect width="800" height="600" fill="url(#grain)"/>
+  <rect width="800" height="600" fill="url(#lamp)"/>
+
+  <!-- table -->
+  <path d="M0 470h800v130H0z" fill="#2c1f19" fill-opacity="0.85"/>
+
+  <!-- board -->
+  <g transform="translate(400 430) rotate(-3)">
+    <rect x="-220" y="-110" width="440" height="220" rx="8" fill="#f5e9d8" fill-opacity="0.92"/>
+    <g fill="#7c4a2d" fill-opacity="0.85">
+      <rect x="-220" y="-110" width="55" height="55"/>
+      <rect x="-110" y="-110" width="55" height="55"/>
+      <rect x="0" y="-110" width="55" height="55"/>
+      <rect x="110" y="-110" width="55" height="55"/>
+      <rect x="-165" y="-55" width="55" height="55"/>
+      <rect x="-55" y="-55" width="55" height="55"/>
+      <rect x="55" y="-55" width="55" height="55"/>
+      <rect x="165" y="-55" width="55" height="55"/>
+      <rect x="-220" y="0" width="55" height="55"/>
+      <rect x="-110" y="0" width="55" height="55"/>
+      <rect x="0" y="0" width="55" height="55"/>
+      <rect x="110" y="0" width="55" height="55"/>
+      <rect x="-165" y="55" width="55" height="55"/>
+      <rect x="-55" y="55" width="55" height="55"/>
+      <rect x="55" y="55" width="55" height="55"/>
+      <rect x="165" y="55" width="55" height="55"/>
+    </g>
+  </g>
+
+  <!-- pieces -->
+  <g fill="#241a16" fill-opacity="0.92">
+    <path d="M300 400c0-22 16-30 16-46h-9l5-16h-30l5 16h-9c0 16 16 24 16 46Z"/>
+    <path d="M262 400c0-16 11-22 11-34h-7l4-12h-22l4 12h-7c0 12 11 18 11 34Z" transform="translate(38 -12)"/>
+    <path d="M470 400c0-16 11-22 11-34h-7l4-12h-22l4 12h-7c0 12 11 18 11 34Z" transform="translate(-30 4)"/>
+    <path d="M520 392c0-26 18-36 18-54h-11l6-18h-36l6 18h-11c0 18 18 28 18 54Z" transform="translate(0 -4)"/>
+  </g>
+
+  <!-- silhouetted player -->
+  <g fill="#1b1310" fill-opacity="0.92">
+    <circle cx="238" cy="236" r="62"/>
+    <path d="M118 470c0-70 54-118 120-118s120 48 120 118H118Z"/>
+  </g>
+  <path d="M186 214a62 62 0 0 1 104 0c-16-18-32-28-52-28s-36 10-52 28Z" fill="#33231c" fill-opacity="0.95"/>
+
+  <!-- reaching arm -->
+  <path d="M330 372c34 10 62 2 86-20" stroke="#1b1310" stroke-opacity="0.92" stroke-width="22" stroke-linecap="round" fill="none"/>
+
+  <text x="400" y="558" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="16" fill="#fde68a" fill-opacity="0.8">CHESS &amp; CALLIGRAPHY</text>
+</svg>

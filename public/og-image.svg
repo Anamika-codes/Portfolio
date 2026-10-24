@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630" role="img" aria-label="Anamika Mukherjee — Full Stack Developer">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#150f22"/>
+      <stop offset="1" stop-color="#0d0b12"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.75" cy="0.15" r="0.7">
+      <stop offset="0" stop-color="#a855f7" stop-opacity="0.5"/>
+      <stop offset="1" stop-color="#a855f7" stop-opacity="0"/>
+    </radialGradient>
+    <pattern id="dots" width="26" height="26" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="1.5" fill="#a855f7" fill-opacity="0.3"/>
+    </pattern>
+  </defs>
+
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <rect width="1200" height="630" fill="url(#dots)"/>
+  <rect width="1200" height="630" fill="url(#glow)"/>
+
+  <rect x="72" y="150" width="66" height="8" rx="4" fill="#a855f7"/>
+  <text x="72" y="128" font-family="JetBrains Mono, monospace" font-size="20" letter-spacing="5" fill="#a855f7">ANAMIKA MUKHERJEE</text>
+
+  <text x="72" y="270" font-family="Space Grotesk, Segoe UI, sans-serif" font-size="66" font-weight="700" fill="#ffffff">I turn ideas into working</text>
+  <text x="72" y="350" font-family="Space Grotesk, Segoe UI, sans-serif" font-size="66" font-weight="700" fill="#d8b4fe">web apps and smart tools.</text>
+
+  <text x="72" y="418" font-family="Inter, sans-serif" font-size="27" fill="#a1a1b5">Full Stack Developer  •  B.Tech CSE '27  •  Machine Learning</text>
+
+  <g transform="translate(72 470)">
+    <rect width="250" height="58" rx="29" fill="#a855f7"/>
+    <text x="125" y="37" text-anchor="middle" font-family="Inter, sans-serif" font-size="21" font-weight="600" fill="#0d0b12">Hire Me</text>
+  </g>
+  <g transform="translate(346 470)">
+    <rect width="250" height="58" rx="29" fill="none" stroke="#3b3450" stroke-width="2"/>
+    <text x="125" y="37" text-anchor="middle" font-family="Inter, sans-serif" font-size="21" font-weight="600" fill="#ffffff">View Projects</text>
+  </g>
+
+  <text x="72" y="586" font-family="JetBrains Mono, monospace" font-size="18" fill="#6f6a83">github.com/Anamika-codes  •  Prayagraj, India</text>
+</svg>
