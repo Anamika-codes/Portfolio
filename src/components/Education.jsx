@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react'
 import { motion, useReducedMotion, animate } from 'framer-motion'
-import { GraduationCap, Calendar, MapPin, Brain } from 'lucide-react'
+import { GraduationCap, Calendar, MapPin, Brain, Sparkles } from 'lucide-react'
 
 /**
  * Animated number counter for degree progress percentage.
- * Smoothly interpolates from 0 to target (75%) over 1.2s with easeOut curve.
- * Immediately displays target when prefers-reduced-motion is active.
+ * Smoothly interpolates from 0 to target (75%) over 1.2s with an easeOut curve.
+ * Respects prefers-reduced-motion by immediately jumping to the target value.
  */
 function ProgressCounter({ target = 75, isInView, shouldReduceMotion }) {
   const [count, setCount] = useState(shouldReduceMotion ? target : 0)
@@ -30,19 +30,20 @@ function ProgressCounter({ target = 75, isInView, shouldReduceMotion }) {
 }
 
 /**
- * Redesigned Education Section Component
+ * Unified Single-Card Education Section
  *
- * Features:
- * - Clean glass card design with 60/40 desktop split (stacked on mobile)
- * - Academic journey gradient timeline touch on card edge
- * - Framer Motion transform/opacity animations with prefers-reduced-motion support
- * - Detail rows with icons and animated degree progress bar
+ * Removes the disjointed two-column split in favor of an elegant,
+ * linear narrative flow:
+ * 1. Prominent header with degree title, graduation cap emblem, and status badges
+ * 2. Focused academic narrative description
+ * 3. 3-metric horizontal highlight bar (Graduation, Location, Focus)
+ * 4. Technical coursework pills with subtle hover lift and glow
+ * 5. Full-width degree completion progress bar with pulsing live status
  */
 export default function Education() {
   const shouldReduceMotion = useReducedMotion()
   const [hasEntered, setHasEntered] = useState(false)
 
-  // Education data preserved exactly as specified
   const degree = {
     title: 'B.Tech in Computer Science & Engineering',
     description:
@@ -55,7 +56,7 @@ export default function Education() {
 
   const tags = ['DSA', 'DBMS', 'Web Engineering', 'Machine Learning', 'OOP']
 
-  const details = [
+  const highlights = [
     {
       icon: Calendar,
       label: 'Graduation',
@@ -73,18 +74,18 @@ export default function Education() {
     },
   ]
 
-  // Animation variants (strictly transform & opacity for smooth 60fps performance)
+  // Animation variants using strictly transform & opacity for smooth 60fps performance
   const containerVariants = {
     hidden: { opacity: shouldReduceMotion ? 1 : 0 },
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: shouldReduceMotion ? 0 : 0.18,
+        staggerChildren: shouldReduceMotion ? 0 : 0.16,
       },
     },
   }
 
-  const headerVariants = {
+  const itemFadeUpVariants = {
     hidden: {
       opacity: shouldReduceMotion ? 1 : 0,
       y: shouldReduceMotion ? 0 : 20,
@@ -99,27 +100,12 @@ export default function Education() {
     },
   }
 
-  const cardVariants = {
-    hidden: {
-      opacity: shouldReduceMotion ? 1 : 0,
-      y: shouldReduceMotion ? 0 : 24,
-    },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: shouldReduceMotion ? 0 : 0.65,
-        ease: [0.22, 1, 0.36, 1],
-      },
-    },
-  }
-
   const tagsContainerVariants = {
     hidden: {},
     visible: {
       transition: {
-        staggerChildren: shouldReduceMotion ? 0 : 0.06,
-        delayChildren: shouldReduceMotion ? 0 : 0.15,
+        staggerChildren: shouldReduceMotion ? 0 : 0.05,
+        delayChildren: shouldReduceMotion ? 0 : 0.1,
       },
     },
   }
@@ -139,59 +125,34 @@ export default function Education() {
     },
   }
 
-  const detailsContainerVariants = {
-    hidden: {},
-    visible: {
-      transition: {
-        staggerChildren: shouldReduceMotion ? 0 : 0.08,
-        delayChildren: shouldReduceMotion ? 0 : 0.2,
-      },
-    },
-  }
-
-  const detailRowVariants = {
-    hidden: {
-      opacity: shouldReduceMotion ? 1 : 0,
-      x: shouldReduceMotion ? 0 : 20,
-    },
-    visible: {
-      opacity: 1,
-      x: 0,
-      transition: {
-        duration: shouldReduceMotion ? 0 : 0.45,
-        ease: 'easeOut',
-      },
-    },
-  }
-
   return (
     <section id="experience" className="section relative overflow-hidden">
-      {/* Target anchor for direct #education links while preserving #experience navigation */}
+      {/* Anchor for direct #education links while maintaining navigation to #experience */}
       <span id="education" className="sr-only" aria-hidden="true" />
 
-      {/* Ambient background glow adhering to navy/purple palette */}
+      {/* Atmospheric purple glow tailored to the navy/purple palette */}
       <div
-        className="pointer-events-none absolute -top-40 left-1/2 h-[360px] w-[680px] -translate-x-1/2 rounded-full bg-[radial-gradient(circle,rgba(168,85,247,0.14)_0%,transparent_70%)] blur-[140px]"
+        className="pointer-events-none absolute -top-40 left-1/2 h-[380px] w-[700px] -translate-x-1/2 rounded-full bg-[radial-gradient(circle,rgba(168,85,247,0.13)_0%,transparent_70%)] blur-[140px]"
         aria-hidden="true"
       />
 
       <motion.div
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true, amount: 0.3 }}
+        viewport={{ once: true, amount: 0.25 }}
         onViewportEnter={() => setHasEntered(true)}
         variants={containerVariants}
         className="shell relative"
       >
-        {/* 1. Section Header */}
-        <motion.div variants={headerVariants} className="mb-10 lg:mb-14">
+        {/* Section Header */}
+        <motion.div variants={itemFadeUpVariants} className="mb-10 lg:mb-12">
           <span className="font-mono text-xs font-semibold uppercase tracking-[0.2em] text-pink-500 dark:text-pink-400">
             EDUCATION
           </span>
           <h2 className="section-title mt-2">
             Education
           </h2>
-          {/* Short gradient underline: 48px wide (w-12), pink to purple */}
+          {/* 48px gradient underline (pink to purple) */}
           <div
             className="mt-3 h-1 w-12 rounded-full bg-gradient-to-r from-pink-500 to-purple-600"
             aria-hidden="true"
@@ -201,9 +162,9 @@ export default function Education() {
           </p>
         </motion.div>
 
-        {/* 2. Main Glass Card Container */}
+        {/* Unified Glass Card (Single cohesive container, no 2-column split) */}
         <motion.div
-          variants={cardVariants}
+          variants={itemFadeUpVariants}
           whileHover={
             shouldReduceMotion
               ? {}
@@ -212,9 +173,9 @@ export default function Education() {
                   transition: { duration: 0.25, ease: 'easeOut' },
                 }
           }
-          className="group relative rounded-2xl border border-line/60 bg-surface/75 p-5 shadow-[0_8px_30px_rgb(0,0,0,0.06)] backdrop-blur-md transition-all duration-300 hover:border-pink-500/30 hover:shadow-[0_16px_45px_-12px_rgba(168,85,247,0.22)] dark:border-white/10 dark:bg-white/[0.05] dark:shadow-[0_8px_32px_0_rgba(168,85,247,0.14)] sm:p-8 lg:p-10"
+          className="group relative overflow-hidden rounded-2xl border border-line/60 bg-surface/80 p-6 shadow-[0_8px_30px_rgb(0,0,0,0.06)] backdrop-blur-md transition-all duration-300 hover:border-pink-500/30 hover:shadow-[0_16px_45px_-12px_rgba(168,85,247,0.22)] dark:border-white/10 dark:bg-white/[0.04] dark:shadow-[0_8px_32px_0_rgba(168,85,247,0.12)] sm:p-8 lg:p-10"
         >
-          {/* 3. Optional Timeline Touch: thin vertical gradient line with glowing dot on left edge */}
+          {/* Academic Journey Timeline Accent on the left edge */}
           <div
             className="pointer-events-none absolute left-0 top-8 bottom-8 w-[2px] rounded-full bg-gradient-to-b from-pink-500 via-purple-500/40 to-transparent"
             aria-hidden="true"
@@ -222,31 +183,73 @@ export default function Education() {
             <span className="absolute -left-[3px] top-6 h-2 w-2 rounded-full bg-pink-400 shadow-[0_0_8px_#ec4899]" />
           </div>
 
-          {/* 2-column layout on desktop (60/40 split), stacked on mobile */}
-          <div className="grid grid-cols-1 gap-8 lg:grid-cols-12 lg:gap-10">
-            {/* LEFT COLUMN: Main Degree Information (approx 60% split) */}
-            <div className="flex flex-col justify-between space-y-6 lg:col-span-7">
-              <div className="space-y-5">
-                {/* 48px rounded gradient square with GraduationCap icon */}
-                <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-pink-500 to-purple-600 shadow-md shadow-pink-500/25">
+          <div className="space-y-8">
+            {/* 1. Card Top Bar: Icon + Degree Title + Badges */}
+            <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
+              <div className="flex items-start gap-4 sm:gap-5">
+                {/* 48px rounded gradient square with GraduationCap */}
+                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-pink-500 to-purple-600 shadow-md shadow-pink-500/25">
                   <GraduationCap className="h-6 w-6 text-white" aria-hidden="true" />
                 </div>
-
-                {/* Degree Title: Largest text in the card */}
-                <h3 className="font-display text-2xl font-bold tracking-tight text-heading dark:text-white sm:text-3xl">
-                  {degree.title}
-                </h3>
-
-                {/* Description: Muted gray, max-width 60ch, comfortable line-height */}
-                <p className="max-w-[60ch] text-[0.95rem] leading-relaxed text-body dark:text-gray-300">
-                  {degree.description}
-                </p>
+                <div>
+                  <h3 className="font-display text-2xl font-bold tracking-tight text-heading dark:text-white sm:text-3xl">
+                    {degree.title}
+                  </h3>
+                  <p className="mt-1 font-mono text-xs uppercase tracking-wider text-body dark:text-gray-400">
+                    B.Tech Undergraduate Programme
+                  </p>
+                </div>
               </div>
 
-              {/* Tags: Pills with subtle lift and glow hover effect */}
+              {/* Status & Cohort Badges */}
+              <div className="flex items-center gap-2 self-start sm:self-auto">
+                <span className="inline-flex items-center rounded-full border border-pink-500/30 bg-pink-500/10 px-3 py-1 font-mono text-xs font-medium tracking-wide text-pink-500 dark:text-pink-400">
+                  {degree.badge}
+                </span>
+                <span className="rounded-full border border-line/60 bg-surface2/60 px-3 py-1 font-mono text-xs font-medium tracking-wide text-body dark:border-white/10 dark:bg-white/[0.05] dark:text-gray-300">
+                  {degree.level}
+                </span>
+              </div>
+            </div>
+
+            {/* 2. Degree Description */}
+            <p className="max-w-4xl text-[0.95rem] leading-relaxed text-body dark:text-gray-300 sm:text-base">
+              {degree.description}
+            </p>
+
+            {/* 3. Horizontal Highlights Grid (Graduation, Location, Focus) */}
+            <div className="grid grid-cols-1 gap-3 sm:grid-cols-3">
+              {highlights.map((item) => {
+                const Icon = item.icon
+                return (
+                  <div
+                    key={item.label}
+                    className="flex items-center gap-3.5 rounded-xl border border-line/50 bg-surface2/40 p-3.5 transition-colors hover:border-pink-500/20 hover:bg-surface2/70 dark:border-white/[0.06] dark:bg-white/[0.02] dark:hover:border-white/15 dark:hover:bg-white/[0.04]"
+                  >
+                    <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-pink-500/20 bg-pink-500/10 text-pink-500 dark:text-pink-400">
+                      <Icon className="h-4 w-4" aria-hidden="true" />
+                    </div>
+                    <div className="min-w-0">
+                      <span className="block font-mono text-[0.6875rem] uppercase tracking-wider text-body dark:text-gray-400">
+                        {item.label}
+                      </span>
+                      <span className="mt-0.5 block truncate text-sm font-medium text-heading dark:text-white">
+                        {item.value}
+                      </span>
+                    </div>
+                  </div>
+                )
+              })}
+            </div>
+
+            {/* 4. Coursework Tags Row */}
+            <div className="space-y-2.5">
+              <span className="font-mono text-[0.7rem] uppercase tracking-widest text-body dark:text-gray-400">
+                Core Engineering Competencies
+              </span>
               <motion.div
                 variants={tagsContainerVariants}
-                className="flex flex-wrap gap-2 pt-2"
+                className="flex flex-wrap gap-2"
               >
                 {tags.map((tag) => (
                   <motion.span
@@ -269,93 +272,45 @@ export default function Education() {
               </motion.div>
             </div>
 
-            {/* RIGHT COLUMN: Details Panel (approx 40% split), separated by thin divider */}
-            <div className="flex flex-col justify-between border-t border-line/40 pt-8 dark:border-white/10 lg:col-span-5 lg:border-t-0 lg:border-l lg:border-line/40 lg:pl-10 lg:pt-0 dark:lg:border-white/10">
-              <div>
-                {/* Header of details panel with Class of 2027 badge */}
-                <div className="flex items-center justify-between gap-4">
-                  <span className="font-mono text-xs uppercase tracking-widest text-body dark:text-gray-400">
-                    Academic Overview
+            {/* 5. Degree Progress Footer Bar */}
+            <div className="rounded-xl border border-line/40 bg-surface2/30 p-4 dark:border-white/[0.06] dark:bg-white/[0.02] sm:p-5">
+              <div className="flex items-center justify-between gap-4">
+                {/* Live Pursuing Degree indicator */}
+                <div className="flex items-center gap-2.5">
+                  <span className="relative flex h-2.5 w-2.5">
+                    <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-pink-400 opacity-75" />
+                    <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-pink-500" />
                   </span>
-                  <span className="inline-flex items-center rounded-full border border-pink-500/30 bg-pink-500/10 px-3 py-1 font-mono text-xs font-medium tracking-wide text-pink-500 dark:text-pink-400">
-                    {degree.badge}
+                  <span className="font-mono text-xs font-semibold uppercase tracking-wider text-heading dark:text-white">
+                    {degree.status}
+                  </span>
+                  <span className="hidden font-mono text-[0.7rem] text-body dark:text-gray-400 sm:inline">
+                    · Year 3 of 4
                   </span>
                 </div>
 
-                {/* 3 Detail Rows: Calendar, MapPin, Brain */}
-                <motion.div
-                  variants={detailsContainerVariants}
-                  className="mt-6 space-y-3.5"
-                >
-                  {details.map((detail) => {
-                    const Icon = detail.icon
-                    return (
-                      <motion.div
-                        key={detail.label}
-                        variants={detailRowVariants}
-                        className="flex items-center gap-3.5 rounded-xl border border-line/40 bg-surface2/40 p-3 transition-colors hover:border-pink-500/20 hover:bg-surface2/70 dark:border-white/[0.05] dark:bg-white/[0.02] dark:hover:border-white/10 dark:hover:bg-white/[0.04]"
-                      >
-                        <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-pink-500/20 bg-pink-500/10 text-pink-500 dark:text-pink-400">
-                          <Icon className="h-4 w-4" aria-hidden="true" />
-                        </div>
-                        <div className="min-w-0">
-                          <span className="block font-mono text-[0.6875rem] uppercase tracking-wider text-body dark:text-gray-400">
-                            {detail.label}
-                          </span>
-                          <span className="mt-0.5 block text-sm font-medium text-heading dark:text-white sm:text-base">
-                            {detail.value}
-                          </span>
-                        </div>
-                      </motion.div>
-                    )
-                  })}
-                </motion.div>
+                {/* Animated Percentage counter */}
+                <span className="font-mono text-xs font-bold text-pink-500 dark:text-pink-400">
+                  <ProgressCounter
+                    target={degree.progress}
+                    isInView={hasEntered}
+                    shouldReduceMotion={shouldReduceMotion}
+                  />
+                </span>
               </div>
 
-              {/* Progress Bar & Status Section */}
-              <div className="mt-8 space-y-3 border-t border-line/40 pt-6 dark:border-white/10">
-                <div className="flex items-center justify-between gap-3">
-                  <div className="flex flex-wrap items-center gap-2.5">
-                    {/* Status dot (pulsing pink) + Pursuing Degree label */}
-                    <div className="flex items-center gap-2">
-                      <span className="relative flex h-2.5 w-2.5">
-                        <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-pink-400 opacity-75" />
-                        <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-pink-500" />
-                      </span>
-                      <span className="font-mono text-xs font-semibold uppercase tracking-wider text-body dark:text-gray-300">
-                        {degree.status}
-                      </span>
-                    </div>
-
-                    {/* Undergraduate pill adjacent to Pursuing Degree label */}
-                    <span className="rounded-full border border-line/60 bg-surface2/60 px-2.5 py-0.5 font-mono text-[0.6875rem] font-medium uppercase tracking-wider text-body dark:border-white/10 dark:bg-white/[0.05] dark:text-gray-300">
-                      {degree.level}
-                    </span>
-                  </div>
-
-                  {/* Degree completion count-up percentage */}
-                  <span className="font-mono text-xs font-semibold text-pink-500 dark:text-pink-400">
-                    <ProgressCounter
-                      target={degree.progress}
-                      isInView={hasEntered}
-                      shouldReduceMotion={shouldReduceMotion}
-                    />
-                  </span>
-                </div>
-
-                {/* Progress bar fill (0 to 75% in 1.2s ease-out) */}
-                <div className="h-2 w-full overflow-hidden rounded-full bg-black/10 dark:bg-white/10">
-                  <motion.div
-                    className="h-full rounded-full bg-gradient-to-r from-pink-500 to-purple-600"
-                    initial={{ width: 0 }}
-                    animate={hasEntered || shouldReduceMotion ? { width: `${degree.progress}%` } : { width: 0 }}
-                    transition={
-                      shouldReduceMotion
-                        ? { duration: 0 }
-                        : { duration: 1.2, ease: 'easeOut' }
-                    }
-                  />
-                </div>
+              {/* Progress Bar Track & Fill */}
+              <div className="mt-3 h-2 w-full overflow-hidden rounded-full bg-black/10 dark:bg-white/10">
+                <motion.div
+                  className="h-full rounded-full bg-gradient-to-r from-pink-500 via-rose-500 to-purple-600"
+                  initial={{ width: 0 }}
+                  animate={hasEntered || shouldReduceMotion ? { width: `${degree.progress}%` } : { width: 0 }}
+                  transition={
+                    shouldReduceMotion
+                      ? { duration: 0 }
+                      : { duration: 1.2, ease: 'easeOut' }
+                  }
+                />
               </div>
             </div>
           </div>
