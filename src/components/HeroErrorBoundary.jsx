@@ -21,7 +21,7 @@ export default class HeroErrorBoundary extends Component {
           <div className="shell relative py-20">
             <h1 className="hero__name">Anamika Mukherjee</h1>
             <p className="hero__headline">Full Stack Developer · Machine Learning Enthusiast</p>
-            <p className="hero__meta">Prayagraj, India · Currently interning at Zrotis</p>
+            <p className="hero__meta">Prayagraj, India · Open to opportunities</p>
           </div>
         </section>
       )

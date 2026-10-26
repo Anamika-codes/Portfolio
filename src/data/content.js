@@ -5,7 +5,7 @@ export const profile = {
   subtitle: "Full Stack Developer | B.Tech CSE '27 | Machine Learning",
   headline: 'I turn ideas into working web apps and smart tools.',
   location: 'Prayagraj, India',
-  company: 'Zrotis',
+  company: '',
   email: 'anamikamukh11@gmail.com',
   github: 'github.com/Anamika-codes',
   githubUrl: 'https://github.com/Anamika-codes',
@@ -24,7 +24,7 @@ export const navLinks = [
 export const stats = [
   { icon: 'folder', value: '5', label: 'Projects Built' },
   { icon: 'bolt', value: '1', label: 'Live Product' },
-  { icon: 'briefcase', value: 'Zrotis', label: 'Current Internship' },
+  { icon: 'briefcase', value: 'Available', label: 'Open to Opportunities' },
   { icon: 'cap', value: '2027', label: 'B.Tech CSE Class' },
 ]
 
@@ -150,39 +150,21 @@ export const projects = [
 
 export const timeline = [
   {
-    id: 'zrotis',
-    icon: 'briefcase',
-    left: {
-      pill: 'Current Role',
-      pillTone: 'accent',
-      title: 'Full Stack Developer Intern',
-      accent: 'Intern at Zrotis',
-      meta: 'Duration: Active Internship',
-    },
-    right: {
-      card: true,
-      bullets: [
-        'Engineering client and server modules with performant modern web patterns and component systems',
-        'Collaborating on API endpoints, state management workflows, and UX responsiveness audits',
-        'Ship features iteratively with code reviews, git workflows, and cross-functional team feedback',
-      ],
-    },
-  },
-  {
     id: 'education',
     icon: 'cap',
     left: {
       card: true,
-      heading: 'Core Focus Areas',
-      text: 'Data Structures, Algorithms, Web Engineering, Machine Learning Foundations, Object-Oriented Programming, and Software Architecture.',
-      chips: ['DSA', 'System Design Basics', 'DBMS'],
+      heading: 'B.Tech in Computer Science & Engineering',
+      text: 'Building a strong foundation in Data Structures, Algorithms, Web Engineering, Machine Learning, OOP, DBMS and Software Architecture.',
+      chips: ['DSA', 'DBMS', 'Web Engineering', 'Machine Learning', 'OOP'],
     },
     right: {
-      pill: 'Class of 2027',
-      pillTone: 'neutral',
-      title: 'B.Tech in Computer Science & Engineering',
-      accent: 'Prayagraj, India',
-      meta: 'Expected Graduation: 2027',
+      card: true,
+      bullets: [
+        'Expected Graduation: 2027',
+        'Prayagraj, India',
+        'Focus: Full-Stack Development & Applied ML',
+      ],
     },
   },
 ]
@@ -279,7 +261,7 @@ export const process = [
 
 export const about = {
   paragraphs: [
-    'Hi! I am Anamika Mukherjee, a Computer Science undergraduate (graduating in 2027) based in Prayagraj, India and a Full Stack Developer currently interning at Zrotis. I enjoy connecting intuitive web applications with practical, explainable machine learning tools to solve meaningful problems.',
+    'Hi! I am Anamika Mukherjee, a Computer Science undergraduate (graduating in 2027) based in Prayagraj, India and a Full Stack Developer. I enjoy connecting intuitive web applications with practical, explainable machine learning tools to solve meaningful problems.',
     'I believe in honest engineering: writing readable code, building systems that actually work, and continuously learning by shipping real software.',
     'Outside of technical work, I enjoy diving into books and discovering new places.',
   ],

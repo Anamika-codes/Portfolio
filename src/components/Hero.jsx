@@ -104,7 +104,7 @@ export default function Hero() {
             </motion.div>
             <motion.div className="hero__meta" variants={reduced ? {} : fadeUp}>
               <span className="inline-flex items-center gap-2"><MapPin className="h-[18px] w-[18px] text-accent-ink" />Prayagraj, India</span>
-              <span className="inline-flex items-center gap-2"><Briefcase className="h-[18px] w-[18px] text-accent-ink" />Currently interning at <strong className="font-semibold text-heading">Zrotis</strong></span>
+              <span className="inline-flex items-center gap-2"><Briefcase className="h-[18px] w-[18px] text-accent-ink" />Open to internships, full-time &amp; freelance opportunities</span>
             </motion.div>
             <motion.div className="hero__actions" variants={reduced ? {} : stagger}>
               <motion.a href="#projects" className="btn btn-primary hero__btn btn-shine" variants={reduced ? {} : pop} whileHover={reduced ? {} : { y: -2, boxShadow: '0 12px 40px -12px rgb(var(--accent) / 0.6)' }} whileTap={reduced ? {} : { scale: 0.97 }}>View Projects<ArrowRight className="h-4 w-4 hero__btn-arrow" /></motion.a>
@@ -121,7 +121,7 @@ export default function Hero() {
                     <img src="/images/first-photo.jpg" alt="Anamika Mukherjee, full stack developer and machine learning engineer" className="hero__portrait-img" width="1600" height="900" />
                     <motion.span className="hero__portrait-badge" initial={reduced ? {} : { opacity: 0, scale: 0.9, y: -6 }} animate={reduced ? {} : { opacity: 1, scale: 1, y: 0 }} transition={reduced ? {} : { delay: 0.8, duration: 0.4, type: 'spring', stiffness: 220, damping: 16 }}>
                       <span className="h-2 w-2 rounded-full bg-green-500 shadow-[0_0_0_3px_rgba(34,197,94,0.22)] hero__status-dot" />
-                      Active at Zrotis
+                      Open to Work
                     </motion.span>
                   </div>
                   <figcaption className="hero__portrait-caption">

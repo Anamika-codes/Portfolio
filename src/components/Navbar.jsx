@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react'
 import { navLinks, profile } from '../data/content'
 import { useActiveSection } from '../lib/hooks'
-import { useTheme } from '../lib/theme'
-import { Close, Github, Menu, Moon, Sun } from './Icons'
+  import { useTheme } from '../lib/theme'
+  import { Close, Github, Menu, Moon, Sun } from './Icons'
 
 const SECTION_IDS = navLinks.map((link) => link.id)
 

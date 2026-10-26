@@ -16,6 +16,8 @@ export default function Contact() {
   const [form, setForm] = useState(initialForm)
   const [errors, setErrors] = useState({})
   const [sent, setSent] = useState(false)
+  const [sending, setSending] = useState(false)
+  const [error, setError] = useState('')
 
   const update = (field) => (event) => {
     const { value } = event.target
@@ -39,11 +41,31 @@ export default function Contact() {
     return Object.keys(next).length === 0
   }
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault()
     if (!validate()) return
-    setSent(true)
-    setForm(initialForm)
+    setSending(true)
+    setError('')
+    try {
+      const formEl = event.target
+      const fd = new FormData(formEl)
+      fd.append('_subject', 'New message from portfolio')
+      fd.append('_captcha', 'false')
+      const res = await fetch('https://formsubmit.co/' + profile.email, {
+        method: 'POST',
+        body: fd,
+      })
+      if (res.ok) {
+        setSent(true)
+        setForm(initialForm)
+      } else {
+        setError('Failed to send message. Please try again or email directly.')
+      }
+    } catch {
+      setError('Failed to send message. Please try again or email directly.')
+    } finally {
+      setSending(false)
+    }
   }
 
   const fieldProps = (field) => ({
@@ -208,10 +230,11 @@ export default function Contact() {
                     ) : null}
                   </div>
 
-                <button type="submit" className="btn btn-primary btn-shine group mt-0.5 w-fit self-center !px-6 !py-2 text-sm">
-                  Send Message
+                <button type="submit" className="btn btn-primary btn-shine group mt-0.5 w-fit self-center !px-6 !py-2 text-sm" disabled={sending}>
+                  {sending ? 'Sending...' : 'Send Message'}
                   <Send className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-1 group-hover:-translate-y-0.5 group-hover:rotate-12" />
                 </button>
+                {error ? <p className="text-center text-[0.75rem] text-red-400">{error}</p> : null}
 
                   <p className="mono pt-1 text-center text-[0.6875rem] text-body">
                     Or email directly at{' '}
