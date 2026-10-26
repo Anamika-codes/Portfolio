@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { motion, useReducedMotion, animate } from 'framer-motion'
-import { GraduationCap, Calendar, MapPin, Brain, Sparkles } from 'lucide-react'
+import { GraduationCap, Calendar, MapPin, Brain } from 'lucide-react'
 
 /**
  * Animated number counter for degree progress percentage.
@@ -30,15 +30,14 @@ function ProgressCounter({ target = 75, isInView, shouldReduceMotion }) {
 }
 
 /**
- * Unified Single-Card Education Section
+ * Compact Single-Card Education Section
  *
- * Removes the disjointed two-column split in favor of an elegant,
- * linear narrative flow:
- * 1. Prominent header with degree title, graduation cap emblem, and status badges
- * 2. Focused academic narrative description
- * 3. 3-metric horizontal highlight bar (Graduation, Location, Focus)
- * 4. Technical coursework pills with subtle hover lift and glow
- * 5. Full-width degree completion progress bar with pulsing live status
+ * Sized proportionally with max-w-3xl container and styled entirely
+ * using the project's native light and dark mode color tokens:
+ * - surface, surface2, surface3
+ * - accent, accent-ink, accent2, accentsoft
+ * - heading, body
+ * - softborder, chip
  */
 export default function Education() {
   const shouldReduceMotion = useReducedMotion()
@@ -74,13 +73,13 @@ export default function Education() {
     },
   ]
 
-  // Animation variants using strictly transform & opacity for smooth 60fps performance
+  // Animation variants using transform & opacity for smooth 60fps performance
   const containerVariants = {
     hidden: { opacity: shouldReduceMotion ? 1 : 0 },
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: shouldReduceMotion ? 0 : 0.16,
+        staggerChildren: shouldReduceMotion ? 0 : 0.14,
       },
     },
   }
@@ -88,13 +87,13 @@ export default function Education() {
   const itemFadeUpVariants = {
     hidden: {
       opacity: shouldReduceMotion ? 1 : 0,
-      y: shouldReduceMotion ? 0 : 20,
+      y: shouldReduceMotion ? 0 : 16,
     },
     visible: {
       opacity: 1,
       y: 0,
       transition: {
-        duration: shouldReduceMotion ? 0 : 0.6,
+        duration: shouldReduceMotion ? 0 : 0.55,
         ease: [0.22, 1, 0.36, 1],
       },
     },
@@ -104,8 +103,8 @@ export default function Education() {
     hidden: {},
     visible: {
       transition: {
-        staggerChildren: shouldReduceMotion ? 0 : 0.05,
-        delayChildren: shouldReduceMotion ? 0 : 0.1,
+        staggerChildren: shouldReduceMotion ? 0 : 0.04,
+        delayChildren: shouldReduceMotion ? 0 : 0.08,
       },
     },
   }
@@ -113,13 +112,13 @@ export default function Education() {
   const tagItemVariants = {
     hidden: {
       opacity: shouldReduceMotion ? 1 : 0,
-      y: shouldReduceMotion ? 0 : 8,
+      y: shouldReduceMotion ? 0 : 6,
     },
     visible: {
       opacity: 1,
       y: 0,
       transition: {
-        duration: shouldReduceMotion ? 0 : 0.3,
+        duration: shouldReduceMotion ? 0 : 0.25,
         ease: 'easeOut',
       },
     },
@@ -127,194 +126,188 @@ export default function Education() {
 
   return (
     <section id="experience" className="section relative overflow-hidden">
-      {/* Anchor for direct #education links while maintaining navigation to #experience */}
+      {/* Anchor for direct #education links while preserving #experience navigation */}
       <span id="education" className="sr-only" aria-hidden="true" />
 
-      {/* Atmospheric purple glow tailored to the navy/purple palette */}
+      {/* Atmospheric ambient glow using project accent token */}
       <div
-        className="pointer-events-none absolute -top-40 left-1/2 h-[380px] w-[700px] -translate-x-1/2 rounded-full bg-[radial-gradient(circle,rgba(168,85,247,0.13)_0%,transparent_70%)] blur-[140px]"
+        className="pointer-events-none absolute -top-36 left-1/2 h-[320px] w-[620px] -translate-x-1/2 rounded-full bg-[radial-gradient(circle,rgb(var(--accent)/0.14)_0%,transparent_70%)] blur-[120px]"
         aria-hidden="true"
       />
 
       <motion.div
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true, amount: 0.25 }}
+        viewport={{ once: true, amount: 0.2 }}
         onViewportEnter={() => setHasEntered(true)}
         variants={containerVariants}
         className="shell relative"
       >
-        {/* Section Header */}
-        <motion.div variants={itemFadeUpVariants} className="mb-10 lg:mb-12">
-          <span className="font-mono text-xs font-semibold uppercase tracking-[0.2em] text-pink-500 dark:text-pink-400">
-            EDUCATION
-          </span>
-          <h2 className="section-title mt-2">
-            Education
-          </h2>
-          {/* 48px gradient underline (pink to purple) */}
-          <div
-            className="mt-3 h-1 w-12 rounded-full bg-gradient-to-r from-pink-500 to-purple-600"
-            aria-hidden="true"
-          />
-          <p className="section-desc mt-4">
-            Focused on building a solid engineering foundation with hands-on development.
-          </p>
-        </motion.div>
-
-        {/* Unified Glass Card (Single cohesive container, no 2-column split) */}
-        <motion.div
-          variants={itemFadeUpVariants}
-          whileHover={
-            shouldReduceMotion
-              ? {}
-              : {
-                  y: -4,
-                  transition: { duration: 0.25, ease: 'easeOut' },
-                }
-          }
-          className="group relative overflow-hidden rounded-2xl border border-line/60 bg-surface/80 p-6 shadow-[0_8px_30px_rgb(0,0,0,0.06)] backdrop-blur-md transition-all duration-300 hover:border-pink-500/30 hover:shadow-[0_16px_45px_-12px_rgba(168,85,247,0.22)] dark:border-white/10 dark:bg-white/[0.04] dark:shadow-[0_8px_32px_0_rgba(168,85,247,0.12)] sm:p-8 lg:p-10"
-        >
-          {/* Academic Journey Timeline Accent on the left edge */}
-          <div
-            className="pointer-events-none absolute left-0 top-8 bottom-8 w-[2px] rounded-full bg-gradient-to-b from-pink-500 via-purple-500/40 to-transparent"
-            aria-hidden="true"
-          >
-            <span className="absolute -left-[3px] top-6 h-2 w-2 rounded-full bg-pink-400 shadow-[0_0_8px_#ec4899]" />
-          </div>
-
-          <div className="space-y-8">
-            {/* 1. Card Top Bar: Icon + Degree Title + Badges */}
-            <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
-              <div className="flex items-start gap-4 sm:gap-5">
-                {/* 48px rounded gradient square with GraduationCap */}
-                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-pink-500 to-purple-600 shadow-md shadow-pink-500/25">
-                  <GraduationCap className="h-6 w-6 text-white" aria-hidden="true" />
-                </div>
-                <div>
-                  <h3 className="font-display text-2xl font-bold tracking-tight text-heading dark:text-white sm:text-3xl">
-                    {degree.title}
-                  </h3>
-                  <p className="mt-1 font-mono text-xs uppercase tracking-wider text-body dark:text-gray-400">
-                    B.Tech Undergraduate Programme
-                  </p>
-                </div>
-              </div>
-
-              {/* Status & Cohort Badges */}
-              <div className="flex items-center gap-2 self-start sm:self-auto">
-                <span className="inline-flex items-center rounded-full border border-pink-500/30 bg-pink-500/10 px-3 py-1 font-mono text-xs font-medium tracking-wide text-pink-500 dark:text-pink-400">
-                  {degree.badge}
-                </span>
-                <span className="rounded-full border border-line/60 bg-surface2/60 px-3 py-1 font-mono text-xs font-medium tracking-wide text-body dark:border-white/10 dark:bg-white/[0.05] dark:text-gray-300">
-                  {degree.level}
-                </span>
-              </div>
-            </div>
-
-            {/* 2. Degree Description */}
-            <p className="max-w-4xl text-[0.95rem] leading-relaxed text-body dark:text-gray-300 sm:text-base">
-              {degree.description}
+        {/* Constrained max-width container for refined card sizing */}
+        <div className="mx-auto max-w-3xl">
+          {/* Section Header */}
+          <motion.div variants={itemFadeUpVariants} className="mb-7 sm:mb-9">
+            <span className="font-mono text-xs font-semibold uppercase tracking-[0.2em] text-accent-ink">
+              EDUCATION
+            </span>
+            <h2 className="section-title mt-2">
+              Education
+            </h2>
+            {/* 48px accent gradient underline using palette tokens */}
+            <div
+              className="mt-2.5 h-1 w-12 rounded-full bg-gradient-to-r from-accent via-accentsoft to-accent2"
+              aria-hidden="true"
+            />
+            <p className="section-desc mt-3">
+              Focused on building a solid engineering foundation with hands-on development.
             </p>
+          </motion.div>
 
-            {/* 3. Horizontal Highlights Grid (Graduation, Location, Focus) */}
-            <div className="grid grid-cols-1 gap-3 sm:grid-cols-3">
-              {highlights.map((item) => {
-                const Icon = item.icon
-                return (
-                  <div
-                    key={item.label}
-                    className="flex items-center gap-3.5 rounded-xl border border-line/50 bg-surface2/40 p-3.5 transition-colors hover:border-pink-500/20 hover:bg-surface2/70 dark:border-white/[0.06] dark:bg-white/[0.02] dark:hover:border-white/15 dark:hover:bg-white/[0.04]"
-                  >
-                    <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-pink-500/20 bg-pink-500/10 text-pink-500 dark:text-pink-400">
-                      <Icon className="h-4 w-4" aria-hidden="true" />
-                    </div>
-                    <div className="min-w-0">
-                      <span className="block font-mono text-[0.6875rem] uppercase tracking-wider text-body dark:text-gray-400">
-                        {item.label}
-                      </span>
-                      <span className="mt-0.5 block truncate text-sm font-medium text-heading dark:text-white">
-                        {item.value}
-                      </span>
-                    </div>
+          {/* Compact Glass Card */}
+          <motion.div
+            variants={itemFadeUpVariants}
+            whileHover={
+              shouldReduceMotion
+                ? {}
+                : {
+                    y: -3,
+                    transition: { duration: 0.2, ease: 'easeOut' },
+                  }
+            }
+            className="group relative overflow-hidden rounded-2xl border border-softborder bg-surface/85 p-5 shadow-card backdrop-blur-md transition-all duration-300 hover:border-accent/40 hover:shadow-lift sm:p-7"
+          >
+            {/* Academic journey subtle timeline indicator on the left edge */}
+            <div
+              className="pointer-events-none absolute left-0 top-6 bottom-6 w-[2px] rounded-full bg-gradient-to-b from-accent via-accentsoft/40 to-transparent"
+              aria-hidden="true"
+            >
+              <span className="absolute -left-[3px] top-5 h-2 w-2 rounded-full bg-accent-ink shadow-[0_0_8px_rgb(var(--accent))]" />
+            </div>
+
+            <div className="space-y-6">
+              {/* 1. Header: Emblem Tile + Degree Title + Status Badges */}
+              <div className="flex flex-col gap-3.5 sm:flex-row sm:items-start sm:justify-between">
+                <div className="flex items-start gap-3.5 sm:gap-4">
+                  {/* 44px icon tile styled with palette colors */}
+                  <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-accent to-accent2 text-onaccent shadow-md shadow-accent/20">
+                    <GraduationCap className="h-5 w-5" aria-hidden="true" />
                   </div>
-                )
-              })}
-            </div>
+                  <div>
+                    <h3 className="font-display text-xl font-bold tracking-tight text-heading sm:text-2xl">
+                      {degree.title}
+                    </h3>
+                    <p className="mt-0.5 font-mono text-xs uppercase tracking-wider text-body">
+                      B.Tech Undergraduate Programme
+                    </p>
+                  </div>
+                </div>
 
-            {/* 4. Coursework Tags Row */}
-            <div className="space-y-2.5">
-              <span className="font-mono text-[0.7rem] uppercase tracking-widest text-body dark:text-gray-400">
-                Core Engineering Competencies
-              </span>
-              <motion.div
-                variants={tagsContainerVariants}
-                className="flex flex-wrap gap-2"
-              >
-                {tags.map((tag) => (
-                  <motion.span
-                    key={tag}
-                    variants={tagItemVariants}
-                    whileHover={
-                      shouldReduceMotion
-                        ? {}
-                        : {
-                            y: -2,
-                            boxShadow: '0 0 14px rgba(236, 72, 153, 0.35)',
-                            borderColor: 'rgba(236, 72, 153, 0.45)',
-                          }
-                    }
-                    className="cursor-default rounded-full border border-line/70 bg-surface2/60 px-3.5 py-1.5 font-mono text-xs font-medium text-body transition-colors dark:border-white/10 dark:bg-white/[0.04] dark:text-gray-300"
-                  >
-                    {tag}
-                  </motion.span>
-                ))}
-              </motion.div>
-            </div>
+                {/* Cohort & Level Pills */}
+                <div className="flex items-center gap-2 self-start sm:self-auto">
+                  <span className="inline-flex items-center rounded-full border border-accent/40 bg-accent/10 px-2.5 py-1 font-mono text-[0.6875rem] font-medium tracking-wide text-accent-ink">
+                    {degree.badge}
+                  </span>
+                  <span className="rounded-full border border-softborder bg-surface2/70 px-2.5 py-1 font-mono text-[0.6875rem] font-medium tracking-wide text-body">
+                    {degree.level}
+                  </span>
+                </div>
+              </div>
 
-            {/* 5. Degree Progress Footer Bar */}
-            <div className="rounded-xl border border-line/40 bg-surface2/30 p-4 dark:border-white/[0.06] dark:bg-white/[0.02] sm:p-5">
-              <div className="flex items-center justify-between gap-4">
-                {/* Live Pursuing Degree indicator */}
-                <div className="flex items-center gap-2.5">
-                  <span className="relative flex h-2.5 w-2.5">
-                    <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-pink-400 opacity-75" />
-                    <span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-pink-500" />
-                  </span>
-                  <span className="font-mono text-xs font-semibold uppercase tracking-wider text-heading dark:text-white">
-                    {degree.status}
-                  </span>
-                  <span className="hidden font-mono text-[0.7rem] text-body dark:text-gray-400 sm:inline">
-                    · Year 3 of 4
+              {/* 2. Degree Description */}
+              <p className="text-sm leading-relaxed text-body sm:text-[0.9375rem]">
+                {degree.description}
+              </p>
+
+              {/* 3. Horizontal Highlights Bar (Graduation, Location, Focus) */}
+              <div className="grid grid-cols-1 gap-2.5 sm:grid-cols-3">
+                {highlights.map((item) => {
+                  const Icon = item.icon
+                  return (
+                    <div
+                      key={item.label}
+                      className="flex items-center gap-3 rounded-xl border border-softborder bg-surface2/50 p-2.5 transition-colors hover:border-accent/30 hover:bg-surface2/80 sm:p-3"
+                    >
+                      <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg border border-accent/20 bg-accent/10 text-accent-ink">
+                        <Icon className="h-3.5 w-3.5" aria-hidden="true" />
+                      </div>
+                      <div className="min-w-0">
+                        <span className="block font-mono text-[0.625rem] uppercase tracking-wider text-body">
+                          {item.label}
+                        </span>
+                        <span className="mt-0.5 block truncate text-xs font-semibold text-heading sm:text-sm">
+                          {item.value}
+                        </span>
+                      </div>
+                    </div>
+                  )
+                })}
+              </div>
+
+              {/* 4. Coursework Tags using the project's native .chip styling */}
+              <div className="space-y-2">
+                <span className="font-mono text-[0.6875rem] uppercase tracking-widest text-body">
+                  Core Engineering Competencies
+                </span>
+                <motion.div
+                  variants={tagsContainerVariants}
+                  className="flex flex-wrap gap-2"
+                >
+                  {tags.map((tag) => (
+                    <motion.span
+                      key={tag}
+                      variants={tagItemVariants}
+                      className="chip cursor-default"
+                    >
+                      {tag}
+                    </motion.span>
+                  ))}
+                </motion.div>
+              </div>
+
+              {/* 5. Progress Footer Bar */}
+              <div className="rounded-xl border border-softborder bg-surface2/40 p-3 sm:p-4">
+                <div className="flex items-center justify-between gap-3">
+                  {/* Status Indicator */}
+                  <div className="flex items-center gap-2">
+                    <span className="relative flex h-2 w-2">
+                      <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-accentsoft opacity-75" />
+                      <span className="relative inline-flex h-2 w-2 rounded-full bg-accent" />
+                    </span>
+                    <span className="font-mono text-xs font-semibold uppercase tracking-wider text-heading">
+                      {degree.status}
+                    </span>
+                    <span className="hidden font-mono text-[0.6875rem] text-body sm:inline">
+                      · Year 3 of 4
+                    </span>
+                  </div>
+
+                  {/* Percentage Counter */}
+                  <span className="font-mono text-xs font-bold text-accent-ink">
+                    <ProgressCounter
+                      target={degree.progress}
+                      isInView={hasEntered}
+                      shouldReduceMotion={shouldReduceMotion}
+                    />
                   </span>
                 </div>
 
-                {/* Animated Percentage counter */}
-                <span className="font-mono text-xs font-bold text-pink-500 dark:text-pink-400">
-                  <ProgressCounter
-                    target={degree.progress}
-                    isInView={hasEntered}
-                    shouldReduceMotion={shouldReduceMotion}
+                {/* Progress Bar Track & Theme Fill */}
+                <div className="mt-2.5 h-1.5 w-full overflow-hidden rounded-full bg-surface3/60 dark:bg-surface2/80">
+                  <motion.div
+                    className="h-full rounded-full bg-gradient-to-r from-accent via-accentsoft to-accent2"
+                    initial={{ width: 0 }}
+                    animate={hasEntered || shouldReduceMotion ? { width: `${degree.progress}%` } : { width: 0 }}
+                    transition={
+                      shouldReduceMotion
+                        ? { duration: 0 }
+                        : { duration: 1.2, ease: 'easeOut' }
+                    }
                   />
-                </span>
-              </div>
-
-              {/* Progress Bar Track & Fill */}
-              <div className="mt-3 h-2 w-full overflow-hidden rounded-full bg-black/10 dark:bg-white/10">
-                <motion.div
-                  className="h-full rounded-full bg-gradient-to-r from-pink-500 via-rose-500 to-purple-600"
-                  initial={{ width: 0 }}
-                  animate={hasEntered || shouldReduceMotion ? { width: `${degree.progress}%` } : { width: 0 }}
-                  transition={
-                    shouldReduceMotion
-                      ? { duration: 0 }
-                      : { duration: 1.2, ease: 'easeOut' }
-                  }
-                />
+                </div>
               </div>
             </div>
-          </div>
-        </motion.div>
+          </motion.div>
+        </div>
       </motion.div>
     </section>
   )
